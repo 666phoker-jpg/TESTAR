@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --gold: #FFD700;
+    --gold2: #D4AF37;
+    --gold3: #B8860B;
+    --dark-gold: #2A1B00;
+    --black: #050403;
+    --panel: #101010;
+    --text: #ffffff;
+    --yellow: #FFD700;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background:
+        radial-gradient(circle at top, #4A3500 0%, #0B0904 45%, #000000 100%);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+/* BACKGROUND */
+.page-bg {
+    min-height: 100vh;
+    padding: 14px 0;
+    background:
+        linear-gradient(rgba(0,20,45,.70), rgba(0,0,0,.90)),
+        repeating-linear-gradient(
+            125deg,
+            transparent 0px,
+            transparent 80px,
+            rgba(255,215,0,.08) 82px,
+            transparent 85px
+        );
+}
+
+/* MAIN WRAPPER */
+.container {
+    width: 880px;
+    max-width: 96%;
+    margin: auto;
+    border: 1px solid var(--gold);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    background: #050403;
+    box-shadow:
+        0 0 15px rgba(255,215,0,.65),
+        0 0 45px rgba(212,175,55,.25);
+}
+
+/* HEADER */
+.header {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    background:
+        linear-gradient(180deg, #2A2416, #0B0A06);
+    border-bottom: 2px solid var(--gold);
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #fff;
+    font-size: 23px;
+    line-height: 18px;
+    text-shadow: 0 0 8px var(--gold);
+}
+
+.logo span {
+    display: block;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+/* LOGIN */
+.login-area {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.login-area input {
+    width: 90px;
+    height: 25px;
+    border: 0;
+    border-radius: 20px;
+    padding: 0 13px;
+    font-size: 10px;
+    outline: none;
+    background: #fff;
+    color: #222;
+}
+
+.login-btn {
+    height: 27px;
+    min-width: 55px;
+    border: 1px solid #FFE66D;
+    border-radius: 20px;
+    background: linear-gradient(#FFE45C, #C99700);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255,215,0,.75);
+}
+
+.login-btn:hover {
+    background: linear-gradient(#FFF0A3, #D4AF37);
+}
+
+/* NOTICE */
+.notice {
+    height: 23px;
+    padding: 5px 7px;
+    color: #fff;
+    font-size: 10px;
+    background: linear-gradient(90deg, #C99700, #FFD700, #C99700);
+    font-weight: bold;
+}
+
+/* CONTENT */
+.content {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background:
+        linear-gradient(180deg, #1E1605, #090704);
+    border-right: 1px solid var(--gold);
+}
+
+.menu-title {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    background: #171106;
+}
+
+.menu-title::before {
+    content: "●";
+    color: var(--gold);
+    margin-right: 10px;
+}
+
+.menu-item {
+    min-height: 29px;
+    display: flex;
+    align-items: center;
+    padding: 7px 8px;
+    border-bottom: 1px solid #5C4718;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.menu-item:hover {
+    color: #fff;
+    background: linear-gradient(90deg, #B8860B, #E6B800);
+    box-shadow: inset 0 0 12px rgba(255,215,0,.5);
+}
+
+.menu-icon {
+    width: 20px;
+    color: var(--gold);
+    font-weight: bold;
+}
+
+/* SIDEBAR BOX */
+.side-box {
+    margin: 10px;
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #0E0B05;
+    box-shadow: 0 0 10px rgba(255,215,0,.2);
+}
+
+.side-box-title {
+    padding: 8px;
+    background: linear-gradient(90deg, #C99700, #FFD700);
+    color: white;
+    font-weight: bold;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 7px;
+    margin: 2px 5px;
+    background: #4A3500;
+    color: white;
+    font-size: 9px;
+}
+
+.result b {
+    color: #FFE66D;
+}
+
+/* MAIN */
+.main {
+    min-width: 0;
+    background:
+        radial-gradient(circle at center top, rgba(184,134,11,.13), transparent 45%),
+        #050403;
+}
+
+/* HERO */
+.hero {
+    min-height: 250px;
+    text-align: center;
+    padding: 15px 10px 0;
+    background:
+        radial-gradient(circle, rgba(212,175,55,.12), transparent 60%);
+}
+
+.brand {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.brand span {
+    color: var(--gold);
+}
+
+.subtitle {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.hero h1 {
+    margin: 12px 0 1px;
+    font-family: Georgia, serif;
+    font-size: 39px;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px var(--gold),
+        0 0 25px var(--gold);
+}
+
+.hero h3 {
+    margin: 0 0 10px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #FFE66D;
+}
+
+/* LEVEL TABLE */
+.level-table {
+    width: 350px;
+    max-width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 8px;
+}
+
+.level-table td {
+    height: 14px;
+    border: 1px solid white;
+    padding: 1px 4px;
+}
+
+.level {
+    width: 55px;
+    background: #087cff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.amount {
+    background: #F5E6B3;
+    color: #222;
+    text-align: center;
+}
+
+.point {
+    width: 70px;
+    background: #E6B800;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* STATISTICS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    background: #050403;
+}
+
+.stat {
+    height: 51px;
+    text-align: center;
+    padding-top: 7px;
+    border-right: 1px solid var(--gold);
+}
+
+.stat:last-child {
+    border-right: 0;
+}
+
+.stat-title {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.stat-number {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.stat-number small {
+    font-size: 9px;
+}
+
+/* PROMO */
+.promo {
+    margin: 10px;
+    padding: 10px 14px;
+    min-height: 61px;
+    border: 1px solid var(--gold);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        linear-gradient(90deg, #071827, #03070b);
+    box-shadow: 0 0 8px rgba(255,215,0,.2);
+}
+
+.promo strong {
+    color: #FFE66D;
+    font-size: 13px;
+}
+
+.promo small {
+    display: block;
+    margin-top: 4px;
+    color: #AAAAAA;
+    font-size: 8px;
+}
+
+.promo-btn {
+    border: 0;
+    border-radius: 20px;
+    padding: 9px 18px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(#FFD700, #C99700);
+    box-shadow: 0 0 12px rgba(255,215,0,.6);
+    cursor: pointer;
+}
+
+/* GAME CATEGORY */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    padding: 2px 10px 12px;
+}
+
+.category {
+    height: 67px;
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background:
+        linear-gradient(145deg, #151515, #030303);
+    box-shadow: inset 0 0 15px rgba(212,175,55,.08);
+    transition: .2s;
+}
+
+.category:hover {
+    background: linear-gradient(145deg, #4A3500, #211800);
+    box-shadow: 0 0 15px rgba(255,215,0,.55);
+    transform: translateY(-2px);
+}
+
+/* POOL BUTTONS */
+.pools {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    padding: 0 10px 13px;
+}
+
+.pool {
+    min-height: 33px;
+    border: 0;
+    border-radius: 6px;
+    background: linear-gradient(#FFD700, #C99700);
+    color: white;
+    font-size: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 7px rgba(255,215,0,.35);
+}
+
+.pool:hover {
+    background: linear-gradient(#FFF1A8, #D4AF37);
+}
+
+/* BANK */
+.bank {
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #5A4515;
+    background: #050403;
+}
+
+.bank-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.bank-btn {
+    height: 50px;
+    border: 1px solid var(--gold);
+    border-radius: 7px;
+    background: #030303;
+    color: #FFD700;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.bank-btn:hover {
+    background: #4A3500;
+    color: white;
+    box-shadow: 0 0 12px var(--gold);
+}
+
+.bank-status {
+    margin-top: 28px;
+    font-size: 15px;
+    color: #999;
+}
+
+.status-green {
+    color: #00FF66;
+}
+
+.status-yellow {
+    color: #FFD700;
+}
+
+.status-red {
+    color: #FF3333;
+}
+
+/* WELCOME */
+.welcome {
+    margin: 12px 10px 10px;
+    min-height: 59px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    background:
+        linear-gradient(90deg, rgba(184,134,11,.04), rgba(255,215,0,.12), rgba(184,134,11,.04));
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: 0 0 7px var(--gold);
+}
+
+/* NEWS */
+.news-title {
+    padding: 8px;
+    background: linear-gradient(90deg, #C99700, #FFD700);
+    color: white;
+    font-weight: bold;
+}
+
+.news {
+    padding: 8px;
+    color: #DDDDDD;
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px) {
+
+    .container {
+        width: 98%;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .header {
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .login-area {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .categories {
+        grid-template-columns: 1fr;
+    }
+
+    .pools {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bank-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--gold);
+    }
+
+    .promo {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-bg">
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            GOLD
+            <span>TOTO</span>
+        </div>
+
+        <div class="login-area">
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button class="login-btn">LOGIN</button>
+        </div>
+
+    </header>
+
+    <div class="#D4AF37"> <marquee behavior="scroll" direction="left">Selamat Datang di GOLDTOTO.</marquee></div>
+
+    <div class="content">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="menu-title">MENU</div>
+
+            <div class="menu-item">
+                <span class="menu-icon">?</span> Cara Bermain
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">→</span> History Nomor
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">♧</span> Buku Mimpi
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">●</span> Referral
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">♟</span> Hubungi Kami
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">■</span> Lupa Password
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">★</span> Promosi
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">▣</span> Prediksi Togel
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">●</span> RTP Slot Gacor
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">●</span> Prediksi Bola
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">→</span> DAFTAR
+            </div>
+
+            <div class="menu-item">
+                <span class="menu-icon">■</span> Hasil Terakhir
+            </div>
+
+            <!-- RESULTS -->
+            <div class="side-box">
+
+                <div class="side-box-title">
+                    📊 Hasil Terakhir
+                </div>
+
+                <div class="result">
+                    <span>ILLINOIS EVE</span>
+                    <b>7824</b>
+                </div>
+
+                <div class="result">
+                    <span>NEWYORKEVE</span>
+                    <b>8550</b>
+                </div>
+
+                <div class="result">
+                    <span>INDIAVE</span>
+                    <b>1503</b>
+                </div>
+
+                <div class="result">
+                    <span>NEWJERSEYEVE</span>
+                    <b>1844</b>
+                </div>
+
+            </div>
+
+            <!-- NEWS -->
+            <div class="side-box">
+
+                <div class="side-box-title">
+                    ▣ Berita Terakhir
+                </div>
+
+                <div class="news">
+                    <b>JAM & JADWAL PASARAN TOGEL</b><br>
+                    06-08-2026 16:10:04
+                    <br><br>
+
+                    <b>DISKON TOGEL HADIAH TERBESAR</b><br>
+                    06-08-2026 17:34:00
+                    <br><br>
+
+                    <b>JADWAL ONLINE OFFLINE BANK</b><br>
+                    06-08-2026 16:46:13
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <!-- HERO -->
+            <section class="hero">
+
+                <div class="brand">
+                    GOLD<span>TOTO</span>
+                </div>
+
+                <div class="subtitle">
+                    BANDAR ONLINE - SLOT - LIVE GAME
+                </div>
+
+                <h1>PANJAT POINT</h1>
+
+                <h3>Turnover GOLDTOTO</h3>
+
+                <table class="level-table">
+
+                    <tr>
+                        <td class="level">LEVEL 1</td>
+                        <td class="amount">10.000.000 - 49.999.999</td>
+                        <td class="point">26.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 2</td>
+                        <td class="amount">50.000.000 - 199.999.999</td>
+                        <td class="point">60.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 3</td>
+                        <td class="amount">200.000.000 - 399.999.999</td>
+                        <td class="point">125.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 4</td>
+                        <td class="amount">400.000.000 - 699.999.999</td>
+                        <td class="point">300.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 5</td>
+                        <td class="amount">700.000.000 - 999.999.999</td>
+                        <td class="point">500.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 6</td>
+                        <td class="amount">1.000.000.000 - 2.999.999.999</td>
+                        <td class="point">2.000.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 7</td>
+                        <td class="amount">3.000.000.000 - 5.999.999.999</td>
+                        <td class="point">5.000.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 8</td>
+                        <td class="amount">8.000.000.000 - 9.999.999.999</td>
+                        <td class="point">8.000.000</td>
+                    </tr>
+
+                    <tr>
+                        <td class="level">LEVEL 9</td>
+                        <td class="amount">10.000.000.000 ++</td>
+                        <td class="point">15.000.000</td>
+                    </tr>
+
+                </table>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats">
+
+                <div class="stat">
+                    <div class="stat-title">DEPOSIT</div>
+                    <div>Rata-Rata <span class="stat-number">01</span> Menit</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-title">WITHDRAW</div>
+                    <div>Rata-Rata <span class="stat-number">03</span> Menit</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-title">MEMBER ONLINE</div>
+                    <div><span class="stat-number">78</span> Member</div>
+                </div>
+
+            </section>
+
+
+            <!-- PROMO -->
+            <section class="promo">
+
+                <div>
+                    <strong>⭐ EVENT - SPORTS</strong>
+                    <small>
+                        Bonus Extra Mini Pantery Terbesar<br>
+                        Raih kesempatan memenangkan ekstra bonus hingga 20 juta rupiah.
+                    </small>
+                </div>
+
+                <button class="promo-btn">
+                    Ikuti Promo &gt;
+                </button>
+
+            </section>
+
+
+            <!-- CATEGORY -->
+            <section class="categories">
+
+                <div class="category">
+                    TOGEL ONLINE
+                </div>
+
+                <div class="category">
+                    LIVE GAMES
+                </div>
+
+                <div class="category">
+                    SLOT GAMES
+                </div>
+
+            </section>
+
+
+            <!-- POOLS -->
+            <section class="pools">
+
+                <button class="pool">
+                    CAROLINA DAY<br>POOL 8
+                </button>
+
+                <button class="pool">
+                    MARYLAND<br>POOL 8
+                </button>
+
+                <button class="pool">
+                    BUFFALO POOL 8
+                </button>
+
+                <button class="pool">
+                    TAIWAN POOL 8
+                </button>
+
+                <button class="pool">
+                    HONGKONG<br>POOL 8
+                </button>
+
+            </section>
+
+
+            <!-- BANK -->
+            <section class="bank">
+
+                <div class="bank-buttons">
+
+                    <button class="bank-btn">BRI</button>
+                    <button class="bank-btn">BCA</button>
+                    <button class="bank-btn">BNI</button>
+                    <button class="bank-btn">dana</button>
+                    <button class="bank-btn">PAY</button>
+
+                </div>
+
+                <div class="bank-status">
+                    Bank Online
+                    <span class="status-green">(●)</span> /
+                    Bank Gangguan
+                    <span class="status-yellow">(●)</span> /
+                    Bank Offline
+                    <span class="status-red">(●)</span>
+                </div>
+
+            </section>
+
+
+            <!-- WELCOME -->
+            <section class="welcome">
+
+                Selamat Datang Di GOLDTOTO Situs Toto Favorit Bet<br>
+                Termurah Dan Hadiah Bergengsi
+
+            </section>
+<title>GOLDTOTO - Gold Edition</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #000000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+    padding: 10px 14px 20px;
+    background: #050403;
+    border-left: 1px solid #D4AF37;
+    border-right: 1px solid #D4AF37;
+    box-shadow:
+        0 0 10px rgba(212,175,55,.35),
+        inset 0 0 30px rgba(184,134,11,.04);
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 24px;
+}
+
+/* TITLE */
+.section-title {
+    color: #E6B800;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 8px 0 10px;
+    text-shadow:
+        0 0 5px #D4AF37,
+        0 0 10px rgba(230,184,0,.5);
+}
+
+.section-title .arrow {
+    color: #FFD700;
+    font-size: 15px;
+}
+
+/* CARD GRID */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* CARD */
+.card {
+    min-height: 84px;
+    padding: 7px;
+    border: 1px solid #E6B800;
+    border-radius: 8px;
+    background: #050403;
+
+    box-shadow:
+        0 0 5px #A97900,
+        inset 0 0 4px rgba(230,184,0,.4);
+
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 8px #E6B800,
+        0 0 18px rgba(212,175,55,.6),
+        inset 0 0 8px rgba(230,184,0,.5);
+}
+
+/* CARD INNER BORDER */
+.card-inner {
+    height: 100%;
+    min-height: 68px;
+    padding: 5px;
+    border: 2px solid #D4AF37;
+    border-radius: 5px;
+}
+
+/* CARD HEADER */
+.card-header {
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #202020;
+    border: 1px solid #777777;
+    border-radius: 3px;
+
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* CARD CONTENT */
+.card-content {
+    text-align: center;
+    margin-top: 7px;
+}
+
+.card-content strong {
+    display: block;
+    color: #E6B800;
+    font-size: 10px;
+    text-shadow: 0 0 5px rgba(230,184,0,.6);
+}
+
+.card-content span {
+    display: block;
+    color: #fff;
+    font-size: 8px;
+    margin-top: 2px;
+}
+
+.card-content small {
+    display: block;
+    color: #FFD700;
+    font-size: 8px;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+/* LINK ALTERNATIF */
+.link-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.link-card {
+    height: 46px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #E6B800;
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #FFD700 0%,
+            #A97900 48%,
+            #8F6500 100%
+        );
+
+    color: #fff;
+
+    box-shadow:
+        0 0 8px rgba(212,175,55,.7),
+        inset 0 1px 5px rgba(255,255,255,.35);
+
+    text-shadow: 0 1px 2px #3A2900;
+}
+
+.link-card strong {
+    font-size: 11px;
+}
+
+.link-card span {
+    font-size: 8px;
+    margin-top: 2px;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #A97900;
+
+    color: #AAAAAA;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.footer b {
+    color: #E6B800;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px) {
+
+    .container {
+        padding: 8px;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .link-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 380px) {
+
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<body>
+
+<div class="container">
+
+    <!-- SPORTSBOOK -->
+    <div class="section">
+
+        <div class="section-title">
+            🏆 &nbsp; SPORTSBOOK <span class="arrow">▼</span>
+        </div>
+
+        <div class="grid-3">
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">
+                        SBOBET
+                    </div>
+
+                    <div class="card-content">
+                        <strong>SPORTSBOOK</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLD</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">
+                        SPORT GG
+                    </div>
+
+                    <div class="card-content">
+                        <strong>SPORTSBOOK</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">
+                        SABA SPORTS
+                    </div>
+
+                    <div class="card-content">
+                        <strong>SPORTSBOOK</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SLOT GAMES -->
+    <div class="section">
+
+        <div class="section-title">
+            🎰 &nbsp; SLOT GAMES <span class="arrow">▼</span>
+        </div>
+
+        <div class="grid-4">
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">PRAGMATIC PLAY</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">PG SOFT</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">IDN SLOT</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">HABANERO</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">MICROGAMING</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">TOP TREND</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">GMW</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">NOLIMIT CITY</div>
+                    <div class="card-content">
+                        <strong>SLOT GAMES</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- LIVE CASINO -->
+    <div class="section">
+
+        <div class="section-title">
+            🎲 &nbsp; LIVE CASINO <span class="arrow">▼</span>
+        </div>
+
+        <div class="grid-4">
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">IDN LIVE BILLIARD</div>
+                    <div class="card-content">
+                        <strong>BILLIARD</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">IDN LIVE OGLOK</div>
+                    <div class="card-content">
+                        <strong>OGLOK</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">IDN LIVE RULETTE</div>
+                    <div class="card-content">
+                        <strong>ROULETTE</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">IDN LIVE DRAGON TIGER</div>
+                    <div class="card-content">
+                        <strong>DRAGON TIGER</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">PRAGMATIC PLAY</div>
+                    <div class="card-content">
+                        <strong>BOOM CITY</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">PRAGMATIC PLAY</div>
+                    <div class="card-content">
+                        <strong>SWEET BONANZA</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">PRAGMATIC PLAY</div>
+                    <div class="card-content">
+                        <strong>VEGAZ BALL</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-header">PRAGMATIC PLAY</div>
+                    <div class="card-content">
+                        <strong>MEGA WHEEL</strong>
+                        <span>MAINKAN SEKARANG</span>
+                        <small>GOLDTOTO</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- LINK ALTERNATIF -->
+    <div class="section">
+
+        <div class="section-title">
+            🔗 &nbsp; LINK ALTERNATIF <span class="arrow">▼</span>
+        </div>
+
+        <div class="link-grid">
+
+            <div class="link-card">
+                <strong>🔗 LINK ALTERNATIF</strong>
+                <span>SERVER IDN SINGAPORE</span>
+            </div>
+
+            <div class="link-card">
+                <strong>🔗 LINK ALTERNATIF</strong>
+                <span>SERVER IDN THAILAND</span>
+            </div>
+
+            <div class="link-card">
+                <strong>🔗 LINK ALTERNATIF</strong>
+                <span>SERVER IDN FILIPINA</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <b>GOLDTOTO</b> hadir sebagai salah satu platform hiburan digital
+        yang banyak dikenal oleh para pengguna permainan angka dan prediksi.
+        Dengan sistem yang dirancang modern, akses yang cepat, serta dukungan
+        keamanan data yang terjamin, platform ini memberikan kenyamanan bagi
+        setiap pengguna.
+    </div>
+<div style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; margin: 20px; border-radius: 10px; #D4AF37 : neon;">
+<p><b>GOLDTOTO</b> GOLDTOTO menjadi destinasi favorit bagi pengguna yang mengutamakan kenyamanan dalam menikmati pengalaman bermain. Tidak hanya menawarkan kemudahan akses, GOLDTOTO juga dikenal karena menghadirkan nilai hiburan yang menarik melalui berbagai pilihan pasaran dan fitur pendukung yang mudah digunakan.
+      </p>
+<p>
+Dalam dunia hiburan digital yang terus berkembang, pengguna tentu menginginkan platform yang mampu memberikan pengalaman yang aman, nyaman, dan praktis. GOLDTOTO memahami kebutuhan tersebut dengan menyediakan tampilan yang responsif untuk berbagai perangkat, mulai dari smartphone hingga desktop. Hal ini memungkinkan pengguna untuk tetap menikmati layanan kapan saja dan di mana saja tanpa harus menghadapi kendala teknis yang mengganggu.
+      </p>
+
+<h2 style="color: #D4AF37 ; border-bottom: 2px solid gold; padding-bottom: 10px;">Mengapa GOLDTOTO Menjadi Pilihan Favorit Banyak Pengguna?</h2>
+        <p>
+            Ada beberapa alasan mengapa GOLDTOTO berhasil mendapatkan perhatian dan kepercayaan dari banyak pengguna.
+      Salah satu faktor utamanya adalah fokus pada pengalaman pengguna yang sederhana namun tetap lengkap,Setiap menu dan fitur dirancang agar mudah dipahami,
+      sehingga baik pengguna baru maupun yang sudah berpengalaman dapat mengakses layanan dengan nyaman.
+      </p>
+<h2 style="color: #D4AF37; border-bottom: 2px solid gold; padding-bottom: 10px;">Keunggulan Bet Termurah yang Menjadi Daya Tarik</h2>
+<p>
+Salah satu hal yang sering menjadi pertimbangan pengguna saat memilih platform hiburan digital adalah fleksibilitas dalam menentukan nominal partisipasi. GOLDTOTO menawarkan pilihan bet yang terjangkau sehingga dapat diakses oleh berbagai kalangan. Konsep ini memungkinkan pengguna menikmati permainan sesuai dengan preferensi masing-masing tanpa harus merasa terbebani
+      </p>
+        <p>
+Bet yang lebih fleksibel juga memberikan kesempatan kepada pengguna untuk mengeksplorasi berbagai jenis permainan yang tersedia. Dengan demikian, pengalaman bermain menjadi lebih variatif dan tidak monoton. Faktor inilah yang membuat banyak pengguna merasa lebih nyaman saat menggunakan layanan yang tersedia di GOLDTOTO.
+      </p>
+<h2 style="color: #D4AF37; border-bottom: 2px solid gold; padding-bottom: 10px;">Hadiah Bergengsi yang Menambah Keseruan Bermain</h2>
+<p>
+Selain menawarkan bet yang terjangkau, GOLDTOTO juga dikenal karena menghadirkan hadiah yang menarik. Bagi banyak pengguna, kesempatan untuk memperoleh hasil yang memuaskan menjadi salah satu motivasi utama dalam menikmati berbagai permainan yang tersedia.
+Hadiah yang tersedia memberikan nilai tambah tersendiri dan membuat setiap sesi permainan terasa lebih seru. Tidak hanya sekadar hiburan, pengguna juga dapat merasakan pengalaman yang lebih berkesan melalui berbagai peluang menarik yang tersedia.
+      </p>
+<p>
+* Nilai hadiah yang kompetitif.</p>
+<p>
+* Berbagai pilihan permainan dengan peluang berbeda.</p>
+<p>
+* Pengalaman bermain yang lebih menegangkan dan menyenangkan.</p>
+<p>
+* Kesempatan menikmati hiburan dengan nilai tambah yang menarik</p>
+
+<h2 style="color: #D4AF37; border-bottom: 2px solid gold; padding-bottom: 10px;">Akses Mudah Melalui Mobile dan Desktop</h2>
+<p>
+Di era digital saat ini, kemudahan akses menjadi faktor yang sangat penting. GOLDTOTO telah mengoptimalkan platformnya agar dapat digunakan dengan baik melalui berbagai perangkat. Pengguna tidak perlu khawatir mengenai kompatibilitas karena tampilan situs telah disesuaikan untuk smartphone, tablet, maupun komputer.</p>
+<p>
+Keunggulan ini memberikan kenyamanan ekstra karena pengguna dapat mengakses layanan kapan saja tanpa harus bergantung pada perangkat tertentu. Baik saat berada di rumah, kantor, maupun dalam perjalanan, semua fitur tetap dapat digunakan dengan lancar.</p>
+<h2 style="color: #D4AF37; border-bottom: 2px solid gold; padding-bottom: 10px;">Tips Menikmati Pengalaman Bermain dengan Lebih Maksimal</h2>
+<p>
+* Memahami setiap jenis permainan sebelum berpartisipasi..</p>
+<p>
+* Menentukan batas penggunaan sesuai kebutuhan pribadi.</p>
+<p>
+* Memanfaatkan fitur dan informasi yang tersedia.</p>
+<p>
+* Menggunakan perangkat dengan koneksi internet yang stabil.</p>
+<p>
+* Menikmati permainan sebagai sarana hiburan yang positif.</p>
+<p>**Dengan menerapkan langkah-langkah sederhana tersebut, pengguna dapat menikmati berbagai fitur yang tersedia secara lebih optimal dan nyaman**.</p>
+
+<h2 style="color: #D4AF37; border-bottom: 2px solid gold; padding-bottom: 10px;">Kesimpulan</h2>
+<p>Selamat Datang Di GOLDTOTO Situs Toto Favorit Bet Termurah Dan Hadiah Bergengsi bukan hanya sekadar sebuah judul, tetapi juga menggambarkan berbagai keunggulan yang ditawarkan kepada para pengguna. Mulai dari akses yang mudah, pilihan pasaran yang lengkap, bet yang terjangkau, hingga kesempatan menikmati hadiah yang menarik, semuanya dirancang untuk memberikan pengalaman hiburan yang lebih berkualitas.
+</p>
+<p>
+Dengan tampilan yang modern, sistem yang responsif, serta fokus pada kenyamanan pengguna, GOLDTOTO terus menjadi salah satu pilihan favorit bagi mereka yang mencari platform hiburan digital yang praktis dan menyenangkan. Kombinasi antara kemudahan penggunaan dan berbagai fitur unggulan menjadikan GOLDTOTO sebagai tempat yang menarik untuk menikmati pengalaman hiburan yang lebih seru setiap harinya.</p>
+</div>
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #030303;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Isi utama website tetap bisa digunakan */
+    .isi-halaman {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+    }
+
+    /* Layer efek visual */
+    #gold-effect {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      width: 100%;
+      height: 100%;
+
+      pointer-events: none;
+      overflow: hidden;
+
+      mix-blend-mode: screen;
+    }
+
+    /* Kilauan emas lembut */
+    #gold-effect::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(255, 191, 0, 0.1),
+          transparent 45%
+        ),
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(49, 12, 255, 0.035),
+          transparent
+        );
+
+      animation: goldPulse 4s ease-in-out infinite alternate;
+    }
+
+    /* Scanline glitch */
+    #gold-effect::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 3px,
+        rgba(255, 200, 0, 0.035) 4px,
+        transparent 5px
+      );
+
+      opacity: 0.6;
+      animation: scanMove 8s linear infinite;
+    }
+
+    #rain-canvas {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      filter:
+        drop-shadow(0 0 4px rgba(255, 190, 0, 0.8))
+        drop-shadow(0 0 10px rgba(255, 145, 0, 0.4));
+    }
+
+    /* Potongan glitch emas */
+    .glitch-line {
+      position: absolute;
+      left: -20%;
+
+      width: 140%;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 174, 0, 0.3) 20%,
+        #fff4a3 48%,
+        #ffb300 55%,
+        transparent 85%
+      );
+
+      box-shadow:
+        0 0 5px #ffc400,
+        0 0 15px rgba(255, 174, 0, 0.8);
+
+      opacity: 0;
+      animation: glitchFlash 4s steps(1) infinite;
+    }
+
+    .glitch-line:nth-child(2) {
+      top: 17%;
+      animation-delay: 0.4s;
+    }
+
+    .glitch-line:nth-child(3) {
+      top: 36%;
+      height: 4px;
+      animation-delay: 1.7s;
+    }
+
+    .glitch-line:nth-child(4) {
+      top: 58%;
+      animation-delay: 2.8s;
+    }
+
+    .glitch-line:nth-child(5) {
+      top: 79%;
+      height: 3px;
+      animation-delay: 3.4s;
+    }
+
+    .glitch-block {
+      position: absolute;
+
+      width: 120px;
+      height: 8px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 217, 92, 0.8),
+        #ff9d00,
+        transparent
+      );
+
+      filter: blur(0.4px);
+      opacity: 0;
+
+      animation: blockGlitch 5s steps(1) infinite;
+    }
+
+    .glitch-block:nth-child(6) {
+      top: 24%;
+      left: 10%;
+      animation-delay: 1s;
+    }
+
+    .glitch-block:nth-child(7) {
+      top: 47%;
+      right: 8%;
+      width: 220px;
+      animation-delay: 2.2s;
+    }
+
+    .glitch-block:nth-child(8) {
+      bottom: 16%;
+      left: 35%;
+      width: 170px;
+      animation-delay: 3.6s;
+    }
+
+    @keyframes goldPulse {
+      from {
+        opacity: 0.45;
+        transform: scale(1);
+      }
+
+      to {
+        opacity: 0.85;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes scanMove {
+      from {
+        transform: translateY(-30px);
+      }
+
+      to {
+        transform: translateY(30px);
+      }
+    }
+
+    @keyframes glitchFlash {
+      0%,
+      88%,
+      100% {
+        opacity: 0;
+        transform: translateX(0) scaleX(1);
+      }
+
+      89% {
+        opacity: 0.9;
+        transform: translateX(-9%) scaleX(0.75);
+      }
+
+      91% {
+        opacity: 0.45;
+        transform: translateX(14%) scaleX(1.1);
+      }
+
+      93% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes blockGlitch {
+      0%,
+      82%,
+      100% {
+        opacity: 0;
+        transform: translateX(0);
+      }
+
+      84% {
+        opacity: 0.9;
+        transform: translateX(80px);
+      }
+
+      86% {
+        opacity: 0.5;
+        transform: translateX(-45px);
+      }
+
+      88% {
+        opacity: 0;
+      }
+    }
+
+    /* Mengurangi animasi pada perangkat yang meminta reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      #gold-effect::before,
+      #gold-effect::after,
+      .glitch-line,
+      .glitch-block {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Masukkan seluruh isi website Anda di sini -->
+  <main class="isi-halaman">
+    <!-- Konten halaman tidak akan terganggu oleh efek -->
+  </main>
+
+  <!-- Efek berada di lapisan paling depan tetapi tidak bisa diklik -->
+  <div id="gold-effect" aria-hidden="true">
+    <canvas id="rain-canvas"></canvas>
+
+    <span class="glitch-line"></span>
+    <span class="glitch-line"></span>
+    <span class="glitch-line"></span>
+    <span class="glitch-line"></span>
+
+    <span class="glitch-block"></span>
+    <span class="glitch-block"></span>
+    <span class="glitch-block"></span>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("rain-canvas");
+    const ctx = canvas.getContext("2d");
+
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
+    let rainDrops = [];
+    let particles = [];
+    let animationFrame;
+
+    function resizeCanvas() {
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      canvas.width = width * pixelRatio;
+      canvas.height = height * pixelRatio;
+
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+      createRain();
+      createParticles();
+    }
+
+    function createRain() {
+      const amount = Math.min(
+        230,
+        Math.floor((width * height) / 7500)
+      );
+
+      rainDrops = [];
+
+      for (let i = 0; i < amount; i++) {
+        rainDrops.push(createDrop(true));
+      }
+    }
+
+    function createDrop(randomPosition = false) {
+      return {
+        x: Math.random() * width,
+        y: randomPosition
+          ? Math.random() * height
+          : -Math.random() * 300,
+
+        length: Math.random() * 22 + 8,
+        speed: Math.random() * 10 + 7,
+        opacity: Math.random() * 0.55 + 0.15,
+        thickness: Math.random() * 1.3 + 0.3,
+        drift: Math.random() * 1.2 - 0.6
+      };
+    }
+
+    function createParticles() {
+      const amount = Math.min(
+        90,
+        Math.floor((width * height) / 15000)
+      );
+
+      particles = [];
+
+      for (let i = 0; i < amount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.8 + 0.4,
+          speed: Math.random() * 0.7 + 0.15,
+          opacity: Math.random() * 0.7 + 0.1,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    function drawRain() {
+      ctx.save();
+
+      for (const drop of rainDrops) {
+        const gradient = ctx.createLinearGradient(
+          drop.x,
+          drop.y,
+          drop.x + drop.drift,
+          drop.y + drop.length
+        );
+
+        gradient.addColorStop(0, "rgba(255, 215, 80, 0)");
+        gradient.addColorStop(
+          0.45,
+          `rgba(255, 200, 30, ${drop.opacity})`
+        );
+        gradient.addColorStop(
+          1,
+          `rgba(255, 245, 170, ${drop.opacity * 0.9})`
+        );
+
+        ctx.beginPath();
+        ctx.moveTo(drop.x, drop.y);
+        ctx.lineTo(
+          drop.x + drop.drift,
+          drop.y + drop.length
+        );
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = drop.thickness;
+        ctx.stroke();
+
+        drop.y += drop.speed;
+        drop.x += drop.drift * 0.15;
+
+        if (
+          drop.y > height + drop.length ||
+          drop.x < -30 ||
+          drop.x > width + 30
+        ) {
+          Object.assign(drop, createDrop(false));
+        }
+      }
+
+      ctx.restore();
+    }
+
+    function drawParticles(time) {
+      ctx.save();
+
+      for (const particle of particles) {
+        particle.y += particle.speed;
+
+        if (particle.y > height + 10) {
+          particle.y = -10;
+          particle.x = Math.random() * width;
+        }
+
+        const shimmer =
+          0.35 +
+          Math.sin(time * 0.002 + particle.phase) * 0.25;
+
+        ctx.beginPath();
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.radius,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          `rgba(255, 211, 70, ${particle.opacity * shimmer})`;
+
+        ctx.shadowBlur = 9;
+        ctx.shadowColor = "rgba(255, 174, 0, 0.9)";
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    function drawGlitchSlices(time) {
+      if (Math.random() > 0.965) {
+        const sliceHeight = Math.random() * 5 + 1;
+        const sliceY = Math.random() * height;
+        const sliceWidth = Math.random() * width * 0.55 + 50;
+        const sliceX = Math.random() * width;
+
+        ctx.save();
+
+        ctx.globalAlpha = Math.random() * 0.55 + 0.2;
+        ctx.fillStyle = Math.random() > 0.5
+          ? "#ffd84a"
+          : "#ff9d00";
+
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = "#ffb300";
+
+        ctx.fillRect(
+          sliceX,
+          sliceY,
+          sliceWidth,
+          sliceHeight
+        );
+
+        ctx.restore();
+      }
+
+      if (Math.sin(time * 0.008) > 0.985) {
+        ctx.save();
+
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = "#ffd700";
+
+        const y = Math.random() * height;
+        ctx.fillRect(0, y, width, Math.random() * 4 + 1);
+
+        ctx.restore();
+      }
+    }
+
+    function animate(time = 0) {
+      ctx.clearRect(0, 0, width, height);
+
+      drawRain();
+      drawParticles(time);
+      drawGlitchSlices(time);
+
+      animationFrame = requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrame);
+      } else {
+        animate();
+      }
+    });
+
+    resizeCanvas();
+    animate();
+  </script>
+
+</body>
+</html>
+
+ <style>
+    /* Pengaturan dasar halaman */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #101020, #261540);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Contoh isi halaman */
+    .isi-halaman {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .isi-halaman h1 {
+      margin-bottom: 20px;
+      font-size: clamp(32px, 6vw, 70px);
+    }
+
+    .isi-halaman p {
+      margin: auto;
+      max-width: 700px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .tombol {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      background: gold;
+      color: #151515;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Lapisan hujan koin */
+    #coin-rain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      /* Berada di halaman paling depan */
+      z-index: 999999;
+
+      /* Tidak mengganggu klik atau isi halaman */
+      pointer-events: none;
+    }
+
+    /* Bentuk dasar koin */
+    .coin {
+      position: absolute;
+      top: -80px;
+      width: var(--coin-size);
+      height: var(--coin-size);
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #fff9a6 0%,
+          #ffe44d 15%,
+          #f5b800 45%,
+          #c77b00 75%,
+          #7a3f00 100%
+        );
+
+      border: 2px solid #fff08a;
+
+      box-shadow:
+        0 0 8px rgba(255, 215, 0, 0.9),
+        0 0 18px rgba(255, 170, 0, 0.6),
+        inset 0 0 5px rgba(255, 255, 255, 0.8),
+        inset 0 -5px 8px rgba(100, 45, 0, 0.55);
+
+      opacity: var(--coin-opacity);
+
+      animation:
+        coin-fall var(--fall-duration) linear forwards,
+        coin-spin var(--spin-duration) linear infinite;
+    }
+
+    /* Simbol pada koin */
+    .coin::before {
+      content: "$";
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #9b5700;
+      font-size: calc(var(--coin-size) * 0.56);
+      font-family: Georgia, serif;
+      font-weight: bold;
+
+      text-shadow: 1px 1px 1px rgba(255, 245, 130, 0.9);
+    }
+
+    /* Garis lingkaran bagian dalam */
+    .coin::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(140, 75, 0, 0.7);
+      border-radius: 50%;
+    }
+
+    /* Animasi koin jatuh */
+    @keyframes coin-fall {
+      0% {
+        transform:
+          translate3d(0, -100px, 0)
+          rotateX(0deg)
+          rotateY(0deg)
+          rotateZ(0deg);
+      }
+
+      50% {
+        transform:
+          translate3d(var(--drift-half), 52vh, 0)
+          rotateX(360deg)
+          rotateY(540deg)
+          rotateZ(180deg);
+      }
+
+      100% {
+        transform:
+          translate3d(var(--drift), 115vh, 0)
+          rotateX(720deg)
+          rotateY(1080deg)
+          rotateZ(360deg);
+      }
+    }
+
+    /* Animasi tambahan agar koin terlihat berputar */
+    @keyframes coin-spin {
+      0% {
+        filter: brightness(0.9);
+      }
+
+      50% {
+        filter: brightness(1.5);
+      }
+
+      100% {
+        filter: brightness(0.9);
+      }
+    }
+
+    /* Mengurangi animasi untuk pengguna tertentu */
+    @media (prefers-reduced-motion: reduce) {
+      .coin {
+        animation-duration: 8s !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Lapisan efek koin -->
+  <div id="coin-rain" aria-hidden="true"></div>
+
+  <!-- Isi halaman Anda -->
+  <main class="isi-halaman">
+    <h1> </h1>
+
+    <p>
+      
+    </p>
+
+
+  </main>
+
+  <script>
+    const coinContainer = document.getElementById("coin-rain");
+
+    /*
+      Ubah angka ini untuk mengatur jumlah koin.
+      Nilai lebih kecil = koin lebih sedikit.
+      Nilai lebih besar = koin lebih banyak.
+    */
+    const coinInterval = 180;
+
+    /*
+      Batas maksimum koin di layar.
+      Digunakan agar efek tidak memberatkan browser.
+    */
+    const maximumCoins = 60;
+
+    function createCoin() {
+      if (coinContainer.children.length >= maximumCoins) {
+        return;
+      }
+
+      const coin = document.createElement("div");
+      coin.classList.add("coin");
+
+      const size = randomNumber(20, 48);
+      const startPosition = randomNumber(0, window.innerWidth);
+      const fallDuration = randomNumber(4, 8);
+      const spinDuration = randomNumber(0.7, 1.8);
+      const drift = randomNumber(-140, 140);
+      const opacity = randomNumber(0.55, 1);
+
+      coin.style.left = `${startPosition}px`;
+      coin.style.setProperty("--coin-size", `${size}px`);
+      coin.style.setProperty("--fall-duration", `${fallDuration}s`);
+      coin.style.setProperty("--spin-duration", `${spinDuration}s`);
+      coin.style.setProperty("--drift", `${drift}px`);
+      coin.style.setProperty("--drift-half", `${drift / 2}px`);
+      coin.style.setProperty("--coin-opacity", opacity);
+
+      coinContainer.appendChild(coin);
+
+      /*
+        Menghapus koin setelah jatuh agar halaman
+        tetap ringan dan tidak mengalami lag.
+      */
+      coin.addEventListener("animationend", function (event) {
+        if (event.animationName === "coin-fall") {
+          coin.remove();
+        }
+      });
+    }
+
+    function randomNumber(minimum, maximum) {
+      return Math.random() * (maximum - minimum) + minimum;
+    }
+
+    /*
+      Membuat beberapa koin langsung saat halaman dibuka.
+    */
+    for (let i = 0; i < 20; i++) {
+      setTimeout(createCoin, i * 100);
+    }
+
+    /*
+      Membuat hujan koin terus-menerus.
+    */
+    setInterval(createCoin, coinInterval);
+  </script>
+
+</body>
+</html>
+
+
+<style>
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Membuat halaman tetap bisa digeser saat di-zoom */
+.page-wrapper {
+  min-width: max-content;
+  min-height: max-content;
+}
+</style>
+
+<div class="bg"></div>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Background</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url("background.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background JPG</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background-image: url("lucky.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Website Saya</h1>
+
+</body>
+</html>
+
+</body>
+</html>
